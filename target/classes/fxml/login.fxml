@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 
 <VBox fx:id="loginPane" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" fx:controller="com.bank.controller.LoginController">
@@ -10,7 +11,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label text="Connexion" style="-fx-font-size: 24px;"/>
+    <Text text="Connexion" style="-fx-font-size: 24;"/>
 
     <GridPane vgap="10" hgap="10">
         <Label text="Email:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
@@ -24,4 +25,6 @@
         <Button text="Se connecter" onAction="#handleLogin"/>
         <Button text="S'inscrire" onAction="#handleRegister"/>
     </HBox>
+
+    <Hyperlink text="Connexion administrateur" onAction="#handleAdminLogin"/>
 </VBox> 

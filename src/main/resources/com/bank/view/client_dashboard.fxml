@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bank.controller.ClientDashboardController"
+      spacing="20" padding="20">
+
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Tableau de bord client" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="logoutButton" text="Déconnexion" onAction="#handleLogout"/>
+    </HBox>
+
+    <!-- Balance Section -->
+    <VBox style="-fx-background-color: #f0f0f0; -fx-padding: 20; -fx-background-radius: 5;">
+        <Label text="Solde du compte" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label fx:id="balanceLabel" text="0.00 €" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+            <Button fx:id="refreshBalanceButton" text="Actualiser" onAction="#refreshBalance"/>
+        </HBox>
+    </VBox>
+
+    <!-- Cards Section -->
+    <VBox spacing="10">
+        <Label text="Mes cartes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <TableView fx:id="cardsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="cardNumberColumn" text="Numéro" fx:property="numero"/>
+                <TableColumn fx:id="cardTypeColumn" text="Type" fx:property="type"/>
+                <TableColumn fx:id="cardStatusColumn" text="Statut" fx:property="statut"/>
+                <TableColumn fx:id="cardBalanceColumn" text="Solde" fx:property="solde"/>
+                <TableColumn fx:id="cardExpiryColumn" text="Date d'expiration" fx:property="dateExpiration"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Transactions Section -->
+    <VBox spacing="10">
+        <Label text="Mes transactions" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <TableView fx:id="transactionsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="transactionDateColumn" text="Date" fx:property="date"/>
+                <TableColumn fx:id="transactionAmountColumn" text="Montant" fx:property="montant"/>
+                <TableColumn fx:id="transactionMerchantColumn" text="Commerçant" fx:property="commercant"/>
+                <TableColumn fx:id="transactionStatusColumn" text="Statut" fx:property="statut"/>
+                <TableColumn fx:id="transactionTypeColumn" text="Type" fx:property="type"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+</VBox> 

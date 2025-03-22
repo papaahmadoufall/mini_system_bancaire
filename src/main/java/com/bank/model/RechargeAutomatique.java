@@ -18,30 +18,32 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "authentifications_transactions")
-public class AuthentificationTransaction {
+@Table(name = "recharges_automatiques")
+public class RechargeAutomatique {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "transaction_id", nullable = false)
-    private BankTransaction transaction;
+    @JoinColumn(name = "carte_id", nullable = false)
+    private CarteBancaire carte;
 
     @Column(nullable = false)
-    private String code;
+    private Double seuil;
 
     @Column(nullable = false)
-    private LocalDateTime dateEnvoi;
-
-    @Column
-    private LocalDateTime dateValidation;
+    private Double montant;
 
     @Column(nullable = false)
     private String statut;
 
-    public void valider() {
-        this.statut = "VALIDÉ";
-        this.dateValidation = LocalDateTime.now();
+    @Column(name = "derniere_recharge", nullable = false)
+    private LocalDateTime derniereRecharge;
+
+    public RechargeAutomatique(CarteBancaire carte, Double seuil, Double montant, String statut) {
+        this.carte = carte;
+        this.seuil = seuil;
+        this.montant = montant;
+        this.statut = statut;
     }
 } 

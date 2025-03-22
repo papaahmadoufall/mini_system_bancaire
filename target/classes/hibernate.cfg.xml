@@ -29,11 +29,12 @@
         <!-- Entity mappings -->
         <mapping class="com.bank.model.Client"/>
         <mapping class="com.bank.model.CarteBancaire"/>
-        <mapping class="com.bank.model.Transaction"/>
+        <mapping class="com.bank.model.BankTransaction"/>
         <mapping class="com.bank.model.AuthentificationTransaction"/>
         <mapping class="com.bank.model.Abonnement"/>
         <mapping class="com.bank.model.Litige"/>
         <mapping class="com.bank.model.Fidelite"/>
         <mapping class="com.bank.model.Admin"/>
+        <mapping class="com.bank.model.RechargeAutomatique"/>
     </session-factory>
 </hibernate-configuration> 

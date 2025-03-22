@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bank.controller.DashboardController"
+      spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="clientNameLabel" text="Nom du client" styleClass="client-name"/>
+        <Label fx:id="pointsFideliteLabel" text="Points de fidélité : 0" styleClass="info-label"/>
+        <Label fx:id="cashbackLabel" text="Cashback total : 0.00 €" styleClass="info-label"/>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button text="Déconnexion" onAction="#handleLogout" />
+    </HBox>
+
+    <TabPane>
+        <Tab text="Cartes" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Type de carte :" />
+                    <ComboBox fx:id="typeCarteComboBox" />
+                    <Label text="Montant initial :" />
+                    <TextField fx:id="montantInitialField" />
+                    <Label text="€" />
+                    <Button text="Demander une carte" onAction="#handleDemanderCarte" />
+                </HBox>
+
+                <TableView fx:id="cartesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="numeroColumn" text="Numéro" />
+                        <TableColumn fx:id="dateExpirationColumn" text="Date d'expiration" />
+                        <TableColumn fx:id="soldeColumn" text="Solde" />
+                        <TableColumn fx:id="limiteColumn" text="Limite journalière" />
+                        <TableColumn fx:id="statutCarteColumn" text="Statut" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="Transactions" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Carte :" />
+                    <ComboBox fx:id="carteComboBox" />
+                    <Label text="Montant :" />
+                    <TextField fx:id="montantField" />
+                    <Label text="Commerçant :" />
+                    <TextField fx:id="commercantField" />
+                    <Button text="Payer" onAction="#handlePaiement" />
+                </HBox>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Carte pour retrait :" />
+                    <ComboBox fx:id="carteRetraitComboBox" />
+                    <Label text="Montant :" />
+                    <TextField fx:id="montantRetraitField" />
+                    <Button text="Retirer" onAction="#handleRetrait" />
+                </HBox>
+
+                <TableView fx:id="transactionTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="typeColumn" text="Type" />
+                        <TableColumn fx:id="montantColumn" text="Montant" />
+                        <TableColumn fx:id="commercantColumn" text="Commerçant" />
+                        <TableColumn fx:id="dateColumn" text="Date" />
+                        <TableColumn fx:id="statutColumn" text="Statut" />
+                        <TableColumn fx:id="pointsColumn" text="Points" />
+                        <TableColumn fx:id="cashbackColumn" text="Cashback" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="Abonnements" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Carte :" />
+                    <ComboBox fx:id="carteAbonnementComboBox" />
+                    <Label text="Service :" />
+                    <TextField fx:id="serviceField" />
+                    <Label text="Montant :" />
+                    <TextField fx:id="montantAbonnementField" />
+                    <Button text="S'abonner" onAction="#handleAbonnement" />
+                </HBox>
+
+                <TableView fx:id="abonnementsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="serviceColumn" text="Service" />
+                        <TableColumn fx:id="montantAbonnementColumn" text="Montant" />
+                        <TableColumn fx:id="datePrelevementColumn" text="Date de prélèvement" />
+                        <TableColumn fx:id="statutAbonnementColumn" text="Statut" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="Litiges" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Motif :" />
+                    <TextArea fx:id="motifLitigeArea" prefRowCount="3" />
+                    <Button fx:id="signalerLitigeButton" text="Signaler un litige" onAction="#handleSignalerLitige" />
+                </HBox>
+
+                <TableView fx:id="litigesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="motifColumn" text="Motif" />
+                        <TableColumn fx:id="statutLitigeColumn" text="Statut" />
+                        <TableColumn fx:id="dateCreationColumn" text="Date de création" />
+                        <TableColumn fx:id="dateResolutionColumn" text="Date de résolution" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox> 

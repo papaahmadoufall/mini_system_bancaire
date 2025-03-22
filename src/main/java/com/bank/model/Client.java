@@ -12,9 +12,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "clients")
 public class Client {
@@ -28,26 +32,26 @@ public class Client {
     @Column(nullable = false)
     private String prenom;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String motDePasse;
 
-    @Column(name = "date_naissance", nullable = false)
+    @Column(nullable = false)
     private LocalDate dateNaissance;
 
     @Column(nullable = false)
+    private LocalDate dateInscription;
+
+    @Column
     private String adresse;
 
-    @Column(nullable = false)
+    @Column
     private String telephone;
 
     @Column(nullable = false)
-    private Double solde;
-
-    @Column(name = "date_inscription", nullable = false)
-    private LocalDate dateInscription;
+    private double solde;
 
     // Relationships
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
@@ -55,4 +59,16 @@ public class Client {
 
     @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
     private Fidelite fidelite;
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", motDePasse='" + motDePasse + '\'' +
+                ", cartes=" + (cartes != null ? cartes.size() + " cartes" : "null") +
+                '}';
+    }
 } 

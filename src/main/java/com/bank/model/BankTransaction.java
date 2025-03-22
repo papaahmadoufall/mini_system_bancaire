@@ -1,6 +1,6 @@
 package com.bank.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,30 +18,28 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "authentifications_transactions")
-public class AuthentificationTransaction {
+@Table(name = "transactions")
+public class BankTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "transaction_id", nullable = false)
-    private BankTransaction transaction;
+    @JoinColumn(name = "carte_id", nullable = false)
+    private CarteBancaire carte;
 
     @Column(nullable = false)
-    private String code;
+    private Double montant;
 
     @Column(nullable = false)
-    private LocalDateTime dateEnvoi;
+    private LocalDate date;
 
-    @Column
-    private LocalDateTime dateValidation;
+    @Column(nullable = false)
+    private String commercant;
+
+    @Column(nullable = false)
+    private String type;
 
     @Column(nullable = false)
     private String statut;
-
-    public void valider() {
-        this.statut = "VALIDÉ";
-        this.dateValidation = LocalDateTime.now();
-    }
 } 

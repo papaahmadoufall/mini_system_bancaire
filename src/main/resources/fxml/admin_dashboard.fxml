@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.controller.AdminDashboardController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label styleClass="header-label" text="Dashboard Administrateur" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button onAction="#handleDeconnexion" text="Déconnexion" />
+    </HBox>
+
+    <TabPane VBox.vgrow="ALWAYS">
+        <Tab closable="false" text="Gestion des Clients">
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Client :" />
+                    <ComboBox fx:id="clientRechargeComboBox" />
+                    <Label text="Montant à ajouter :" />
+                    <TextField fx:id="montantAjoutField" />
+                    <Label text="€" />
+                    <Button onAction="#handleAjouterArgent" text="Ajouter de l'argent" />
+                </HBox>
+
+                <TableView fx:id="clientsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="clientIdColumn" text="ID" />
+                        <TableColumn fx:id="clientNomColumn" text="Nom" />
+                        <TableColumn fx:id="clientPrenomColumn" text="Prénom" />
+                        <TableColumn fx:id="clientEmailColumn" text="Email" />
+                        <TableColumn fx:id="clientSoldeColumn" text="Solde" />
+                        <TableColumn fx:id="clientTelephoneColumn" text="Téléphone" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab closable="false" text="Gestion des Cartes">
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Client :" />
+                    <ComboBox fx:id="clientComboBox" />
+                    <Label text="Type de carte :" />
+                    <ComboBox fx:id="typeCarteComboBox" />
+                    <Label text="Montant initial :" />
+                    <TextField fx:id="montantInitialField" />
+                    <Label text="€" />
+                    <Label text="Solde client :" />
+                    <Label fx:id="soldeClientLabel" />
+                    <Label text="€" />
+                    <Label text="Limite journalière :" />
+                    <TextField fx:id="limiteJournaliereField" />
+                    <Button onAction="#handleCreerCarte" text="Créer une carte" />
+                </HBox>
+
+                <TableView fx:id="cartesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="numeroCarteColumn" text="Numéro" />
+                        <TableColumn fx:id="clientCarteColumn" text="Client" />
+                        <TableColumn fx:id="typeCarteColumn" text="Type" />
+                        <TableColumn fx:id="soldeCarteColumn" text="Solde" />
+                        <TableColumn fx:id="limiteCarteColumn" text="Limite journalière" />
+                        <TableColumn fx:id="statutCarteColumn" text="Statut" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button onAction="#handleBloquerCarte" text="Bloquer la carte" />
+                    <Button onAction="#handleDebloquerCarte" text="Débloquer la carte" />
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab closable="false" text="Recharge Automatique">
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Carte :" />
+                    <ComboBox fx:id="carteRechargeComboBox" />
+                    <Label text="Seuil de recharge :" />
+                    <TextField fx:id="seuilRechargeField" />
+                    <Label text="Montant de recharge :" />
+                    <TextField fx:id="montantRechargeField" />
+                    <Button onAction="#handleConfigurerRecharge" text="Configurer" />
+                </HBox>
+
+                <TableView fx:id="rechargesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="carteRechargeColumn" text="Carte" />
+                        <TableColumn fx:id="seuilRechargeColumn" text="Seuil" />
+                        <TableColumn fx:id="montantRechargeColumn" text="Montant" />
+                        <TableColumn fx:id="statutRechargeColumn" text="Statut" />
+                        <TableColumn fx:id="derniereRechargeColumn" text="Dernière recharge" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button onAction="#handleActiverRecharge" text="Activer la recharge" />
+                    <Button onAction="#handleDesactiverRecharge" text="Désactiver la recharge" />
+                </HBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
