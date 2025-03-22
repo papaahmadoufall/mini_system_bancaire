@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.bank.controller.RegisterController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Inscription" style="-fx-font-size: 24px;"/>
+
+    <GridPane vgap="10" hgap="10">
+        <Label text="Nom:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nomField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Prénom:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="prenomField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Mot de passe:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="passwordField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Date de naissance:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dateNaissancePicker" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="Adresse:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="adresseField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <Label text="Téléphone:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <TextField fx:id="telephoneField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Label text="Dépôt initial:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <TextField fx:id="soldeField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="S'inscrire" onAction="#handleRegister"/>
+        <Button text="Retour" onAction="#handleBack"/>
+    </HBox>
+</VBox> 

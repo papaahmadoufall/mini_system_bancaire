@@ -1,0 +1,9 @@
+com\bank\dao\ClientDAO.class
+com\bank\model\Admin.class
+com\bank\model\CarteBancaire.class
+com\bank\model\Transaction.class
+com\bank\model\Abonnement.class
+com\bank\model\AuthentificationTransaction.class
+com\bank\model\Litige.class
+com\bank\model\Client.class
+com\bank\model\Fidelite.class
