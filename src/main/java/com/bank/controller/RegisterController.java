@@ -43,7 +43,7 @@ public class RegisterController {
             client.setAdresse(adresseField.getText().trim());
             client.setTelephone(telephoneField.getText().trim());
             client.setSolde(Double.parseDouble(soldeField.getText().trim()));
-            client.setDateCreation(LocalDate.now());
+            client.setDateInscription(LocalDate.now());
 
             // Check if email already exists
             if (clientDAO.findByEmail(client.getEmail()) != null) {

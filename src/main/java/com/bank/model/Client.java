@@ -1,12 +1,16 @@
 package com.bank.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -30,7 +34,7 @@ public class Client {
     @Column(nullable = false)
     private String motDePasse;
 
-    @Column(nullable = false)
+    @Column(name = "date_naissance", nullable = false)
     private LocalDate dateNaissance;
 
     @Column(nullable = false)
@@ -40,8 +44,15 @@ public class Client {
     private String telephone;
 
     @Column(nullable = false)
-    private double solde;
+    private Double solde;
 
-    @Column(nullable = false)
-    private LocalDate dateCreation;
+    @Column(name = "date_inscription", nullable = false)
+    private LocalDate dateInscription;
+
+    // Relationships
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<CarteBancaire> cartes;
+
+    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
+    private Fidelite fidelite;
 } 

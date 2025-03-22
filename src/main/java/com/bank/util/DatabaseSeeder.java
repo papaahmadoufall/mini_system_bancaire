@@ -32,7 +32,7 @@ public class DatabaseSeeder {
                     client1.setAdresse("123 Main St");
                     client1.setTelephone("0612345678");
                     client1.setSolde(1000.0);
-                    client1.setDateCreation(LocalDate.now());
+                    client1.setDateInscription(LocalDate.now());
 
                     Client client2 = new Client();
                     client2.setNom("Smith");
@@ -43,7 +43,7 @@ public class DatabaseSeeder {
                     client2.setAdresse("456 Oak Ave");
                     client2.setTelephone("0623456789");
                     client2.setSolde(2000.0);
-                    client2.setDateCreation(LocalDate.now());
+                    client2.setDateInscription(LocalDate.now());
 
                     Client client3 = new Client();
                     client3.setNom("Brown");
@@ -54,7 +54,7 @@ public class DatabaseSeeder {
                     client3.setAdresse("789 Pine St");
                     client3.setTelephone("0634567890");
                     client3.setSolde(1500.0);
-                    client3.setDateCreation(LocalDate.now());
+                    client3.setDateInscription(LocalDate.now());
 
                     // Save clients to database
                     session.persist(client1);
