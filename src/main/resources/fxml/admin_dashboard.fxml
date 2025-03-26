@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.controller.AdminDashboardController">
+<VBox prefHeight="622.0" prefWidth="1011.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.controller.AdminDashboardController">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
@@ -15,10 +15,10 @@
         <Button onAction="#handleDeconnexion" text="Déconnexion" />
     </HBox>
 
-    <TabPane VBox.vgrow="ALWAYS">
+    <TabPane prefHeight="592.0" prefWidth="991.0" VBox.vgrow="ALWAYS">
         <Tab closable="false" text="Gestion des Clients">
             <VBox spacing="10">
-                <HBox alignment="CENTER_LEFT" spacing="10">
+                <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="991.0" spacing="10">
                     <Label text="Client :" />
                     <ComboBox fx:id="clientRechargeComboBox" />
                     <Label text="Montant à ajouter :" />
@@ -40,6 +40,34 @@
             </VBox>
         </Tab>
 
+        <Tab closable="false" text="Transactions Suspectes">
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Seuil de suspicion :" />
+                    <TextField fx:id="seuilSuspicionField" text="1000.0" />
+                    <Label text="€" />
+                    <Button onAction="#handleActualiserSuspicion" text="Actualiser" />
+                </HBox>
+
+                <TableView fx:id="transactionsSuspectesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="clientColumn" text="Client" />
+                        <TableColumn fx:id="carteColumn" text="Carte" />
+                        <TableColumn fx:id="montantColumn" text="Montant" />
+                        <TableColumn fx:id="dateColumn" text="Date" />
+                        <TableColumn fx:id="commercantColumn" text="Commerçant" />
+                        <TableColumn fx:id="typeColumn" text="Type" />
+                        <TableColumn fx:id="statutColumn" text="Statut" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button onAction="#handleBloquerTransaction" text="Bloquer la transaction" />
+                    <Button onAction="#handleAutoriserTransaction" text="Autoriser la transaction" />
+                </HBox>
+            </VBox>
+        </Tab>
+
         <Tab closable="false" text="Gestion des Cartes">
             <VBox spacing="10">
                 <HBox alignment="CENTER_LEFT" spacing="10">
@@ -58,7 +86,7 @@
                     <Button onAction="#handleCreerCarte" text="Créer une carte" />
                 </HBox>
 
-                <TableView fx:id="cartesTable" VBox.vgrow="ALWAYS">
+                <TableView fx:id="cartesTable" prefHeight="368.0" prefWidth="991.0" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="numeroCarteColumn" text="Numéro" />
                         <TableColumn fx:id="clientCarteColumn" text="Client" />
@@ -78,7 +106,7 @@
 
         <Tab closable="false" text="Recharge Automatique">
             <VBox spacing="10">
-                <HBox alignment="CENTER_LEFT" spacing="10">
+                <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="991.0" spacing="10">
                     <Label text="Carte :" />
                     <ComboBox fx:id="carteRechargeComboBox" />
                     <Label text="Seuil de recharge :" />
@@ -88,7 +116,7 @@
                     <Button onAction="#handleConfigurerRecharge" text="Configurer" />
                 </HBox>
 
-                <TableView fx:id="rechargesTable" VBox.vgrow="ALWAYS">
+                <TableView fx:id="rechargesTable" prefHeight="330.0" prefWidth="991.0" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="carteRechargeColumn" text="Carte" />
                         <TableColumn fx:id="seuilRechargeColumn" text="Seuil" />

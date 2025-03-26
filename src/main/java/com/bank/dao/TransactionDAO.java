@@ -95,7 +95,7 @@ public class TransactionDAO {
 
     public long count() {
         try (Session session = DatabaseUtil.getSession()) {
-            return (Long) session.createQuery("SELECT COUNT(*) FROM Transaction").uniqueResult();
+            return (Long) session.createQuery("SELECT COUNT(*) FROM BankTransaction").uniqueResult();
         }
     }
 } 
